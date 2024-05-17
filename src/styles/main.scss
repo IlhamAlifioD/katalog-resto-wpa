@@ -1,0 +1,120 @@
+// * Universal Styling
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+$main-color: #171717;
+$second-color: #272727;
+$third-color: #ffffff;
+
+$montserrat: "montserrat", sans-serif;
+$quicksand: "quicksand", arial;
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding: var(--scroll-padding, 5rem);
+}
+
+body {
+	overflow-x: hidden;
+	font-family: $montserrat;
+}
+
+header,
+footer {
+	font-family: $quicksand;
+}
+
+main {
+	min-height: 50svh;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+a,
+button,
+input,
+textarea {
+	min-width: 44px;
+	min-height: 44px;
+}
+
+.head-text {
+	font-family: $quicksand;
+	font-weight: 700;
+	letter-spacing: -1px;
+}
+
+.skip-content {
+	position: absolute;
+	border: none;
+	border-radius: 5px;
+	left: -100%;
+	top: 0;
+	padding: 16px;
+
+	background-color: $third-color;
+	color: $main-color;
+	font-weight: 800;
+
+	transition: left 0.5s ease-in-out;
+	z-index: 1000;
+
+	&:focus {
+		left: 0;
+	}
+}
+
+.empty,
+.error {
+	grid-column: 1/-1;
+	padding: 10px;
+	margin: 50px 0;
+	text-align: center;
+
+	font-size: 2rem;
+	font-weight: 900;
+
+	@media screen and (min-width: 520px) {
+		font-size: 2.7rem;
+
+		@media screen and (min-width: 680px) {
+			font-size: 3rem;
+		}
+	}
+}
+
+// * Universal Container Styling
+@mixin bar-container {
+	padding: 1rem;
+
+	@media screen and (min-width: 600px) {
+		padding: 1.7rem;
+	}
+}
+
+@mixin content-container {
+	padding: 2rem 2.5rem;
+
+	@media screen and (min-width: 768px) {
+		padding: 3rem 4rem;
+	}
+}
+
+// * Import Partial Part SCSS
+@import "header";
+@import "explore";
+@import "detail";
+@import "footer";

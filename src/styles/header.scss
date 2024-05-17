@@ -1,0 +1,169 @@
+// * Navigation Bar Styling
+navigation-bar {
+	@include bar-container;
+
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+
+	font-size: 1rem;
+	background: $main-color;
+	color: $third-color;
+	z-index: 999;
+
+	.nav-title {
+		align-self: flex-start;
+	}
+
+	#drawer-btn {
+		border: none;
+		color: $third-color;
+		background-color: $main-color;
+
+		i {
+			font-size: 1.2rem;
+		}
+	}
+
+	.drawer-list {
+		position: absolute;
+		top: 100%;
+		right: -100%;
+		width: 100%;
+		transition: 0.5s ease-in-out;
+
+		&.show {
+			transform: translate(0, 0);
+			right: 0;
+			background-color: $second-color;
+
+			li {
+				border-bottom: 1px solid $third-color;
+			}
+		}
+
+		a {
+			display: inline-block;
+			width: 100%;
+			padding: 1.2rem;
+
+			color: $third-color;
+			text-align: center;
+			font-size: 1rem;
+			font-weight: 800;
+
+			&:hover {
+				transition: 0.5s ease-in-out;
+				background-color: $third-color;
+				color: $main-color;
+			}
+		}
+	}
+
+	@media screen and (min-width: 727px) {
+		font-size: 1.2rem;
+
+		.nav-title {
+			align-self: center;
+			width: 100%;
+		}
+
+		#drawer-btn {
+			display: none;
+		}
+
+		.drawer-list {
+			position: static;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-end;
+			gap: 1rem;
+
+			background-color: $main-color !important;
+
+			li {
+				border-bottom: $main-color !important;
+			}
+		}
+	}
+}
+
+// * Hero (Jumbotron) Styling
+.hero {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100svh;
+
+	img,
+	picture {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+
+		z-index: -1;
+	}
+
+	.hero-content {
+		display: flex;
+		flex-flow: column nowrap;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		width: 100%;
+		height: 100%;
+
+		background: rgba(2, 1, 1, 0.5);
+		color: $third-color;
+	}
+
+	.hero-title {
+		font-size: 3rem;
+	}
+	.hero-tagline {
+		font-size: 1rem;
+		font-weight: 600;
+	}
+
+	.hero-shortcut {
+		padding: 10px;
+		border: none;
+		border-radius: 10px;
+
+		font-size: 1rem;
+		font-weight: 800;
+		background-color: $third-color;
+		color: $main-color;
+
+		&:hover {
+			box-shadow: 0 0 15px $third-color;
+		}
+	}
+
+	@media screen and (min-width: 520px) {
+		.hero-title {
+			font-size: 4.5rem;
+		}
+
+		.hero-tagline {
+			font-size: 1.2rem;
+		}
+		@media screen and (min-width: 600px) {
+			.hero-title {
+				font-size: 5rem;
+			}
+
+			.hero-tagline {
+				font-size: 1.8rem;
+			}
+		}
+	}
+}

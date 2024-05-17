@@ -1,0 +1,25 @@
+footer-bar {
+	@include bar-container;
+
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+
+	gap: 0.5rem;
+	width: 100%;
+
+	background-color: $main-color;
+	color: $third-color;
+
+	height: fit-content;
+
+	h5 {
+		font-size: 1rem;
+	}
+
+	p {
+		font-size: 0.7rem;
+	}
+}

@@ -1,0 +1,847 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding: var(--scroll-padding, 5rem);
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "montserrat", sans-serif;
+}
+
+header,
+footer {
+  font-family: "quicksand", arial;
+}
+
+main {
+  min-height: 50svh;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+a,
+button,
+input,
+textarea {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.head-text {
+  font-family: "quicksand", arial;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.skip-content {
+  position: absolute;
+  border: none;
+  border-radius: 5px;
+  left: -100%;
+  top: 0;
+  padding: 16px;
+  background-color: #ffffff;
+  color: #171717;
+  font-weight: 800;
+  transition: left 0.5s ease-in-out;
+  z-index: 1000;
+}
+.skip-content:focus {
+  left: 0;
+}
+
+.empty,
+.error {
+  grid-column: 1/-1;
+  padding: 10px;
+  margin: 50px 0;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+}
+@media screen and (min-width: 520px) {
+  .empty,
+  .error {
+    font-size: 2.7rem;
+  }
+}
+@media screen and (min-width: 520px) and (min-width: 680px) {
+  .empty,
+  .error {
+    font-size: 3rem;
+  }
+}
+
+navigation-bar {
+  padding: 1rem;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 1rem;
+  background: #171717;
+  color: #ffffff;
+  z-index: 999;
+}
+@media screen and (min-width: 600px) {
+  navigation-bar {
+    padding: 1.7rem;
+  }
+}
+navigation-bar .nav-title {
+  align-self: flex-start;
+}
+navigation-bar #drawer-btn {
+  border: none;
+  color: #ffffff;
+  background-color: #171717;
+}
+navigation-bar #drawer-btn i {
+  font-size: 1.2rem;
+}
+navigation-bar .drawer-list {
+  position: absolute;
+  top: 100%;
+  right: -100%;
+  width: 100%;
+  transition: 0.5s ease-in-out;
+}
+navigation-bar .drawer-list.show {
+  transform: translate(0, 0);
+  right: 0;
+  background-color: #272727;
+}
+navigation-bar .drawer-list.show li {
+  border-bottom: 1px solid #ffffff;
+}
+navigation-bar .drawer-list a {
+  display: inline-block;
+  width: 100%;
+  padding: 1.2rem;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 800;
+}
+navigation-bar .drawer-list a:hover {
+  transition: 0.5s ease-in-out;
+  background-color: #ffffff;
+  color: #171717;
+}
+@media screen and (min-width: 727px) {
+  navigation-bar {
+    font-size: 1.2rem;
+  }
+  navigation-bar .nav-title {
+    align-self: center;
+    width: 100%;
+  }
+  navigation-bar #drawer-btn {
+    display: none;
+  }
+  navigation-bar .drawer-list {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    background-color: #171717 !important;
+  }
+  navigation-bar .drawer-list li {
+    border-bottom: #171717 !important;
+  }
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100svh;
+}
+.hero img,
+.hero picture {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+}
+.hero .hero-content {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  background: rgba(2, 1, 1, 0.5);
+  color: #ffffff;
+}
+.hero .hero-title {
+  font-size: 3rem;
+}
+.hero .hero-tagline {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.hero .hero-shortcut {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 800;
+  background-color: #ffffff;
+  color: #171717;
+}
+.hero .hero-shortcut:hover {
+  box-shadow: 0 0 15px #ffffff;
+}
+@media screen and (min-width: 520px) {
+  .hero .hero-title {
+    font-size: 4.5rem;
+  }
+  .hero .hero-tagline {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (min-width: 520px) and (min-width: 600px) {
+  .hero .hero-title {
+    font-size: 5rem;
+  }
+  .hero .hero-tagline {
+    font-size: 1.8rem;
+  }
+}
+
+.explore-section {
+  padding: 2rem 2.5rem;
+}
+@media screen and (min-width: 768px) {
+  .explore-section {
+    padding: 3rem 4rem;
+  }
+}
+.explore-section h2 {
+  text-align: center;
+  font-size: 2.3rem;
+  margin-bottom: 2rem;
+}
+@media screen and (min-width: 520px) {
+  .explore-section h2 {
+    font-size: 3rem;
+  }
+}
+@media screen and (min-width: 520px) and (min-width: 680px) {
+  .explore-section h2 {
+    font-size: 3.5rem;
+  }
+}
+.explore-section restaurant-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.2rem;
+}
+@media screen and (min-width: 375px) {
+  .explore-section restaurant-list {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+@media screen and (min-width: 375px) and (min-width: 1080px) {
+  .explore-section restaurant-list {
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    gap: 2.5rem;
+  }
+}
+@media screen and (min-width: 375px) and (min-width: 1080px) and (min-width: 1200px) {
+  .explore-section restaurant-list {
+    grid-template-columns: repeat(3, minmax(350px, 1fr));
+  }
+}
+@media screen and (min-width: 375px) and (min-width: 1080px) and (min-width: 1200px) and (min-width: 1600px) {
+  .explore-section restaurant-list {
+    grid-template-columns: repeat(4, minmax(350px, 1fr));
+  }
+}
+.explore-section restaurant-item {
+  border: 5px #272727 solid;
+  cursor: pointer;
+}
+.explore-section restaurant-item:hover, .explore-section restaurant-item:focus, .explore-section restaurant-item:focus-visible {
+  box-shadow: 0px 0px 30px #171717;
+}
+.explore-section restaurant-item .top-details {
+  position: relative;
+  height: 280px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.explore-section restaurant-item .top-details .resto-city {
+  position: absolute;
+  top: -1%;
+  left: -1%;
+  padding: 10px;
+  border-bottom-right-radius: 7px;
+  background-color: #272727;
+  color: #ffffff;
+}
+@media screen and (min-width: 768px) {
+  .explore-section restaurant-item .top-details .resto-city {
+    top: -1.8%;
+    left: -0.1%;
+  }
+}
+.explore-section restaurant-item .top-details picture img,
+.explore-section restaurant-item .top-details picture source {
+  width: 100%;
+  height: 100%;
+}
+.explore-section restaurant-item .top-details picture img img,
+.explore-section restaurant-item .top-details picture source img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.explore-section restaurant-item .top-details .resto-rating {
+  position: absolute;
+  right: -1px;
+  bottom: 0;
+  padding: 0.5rem;
+  border-top-left-radius: 7px;
+  background: #272727;
+  color: #ffffff;
+  text-align: center;
+}
+@media screen and (min-width: 600px) {
+  .explore-section restaurant-item .top-details {
+    font-size: 1rem;
+  }
+}
+.explore-section restaurant-item .bottom-details {
+  padding: 1rem;
+}
+.explore-section restaurant-item .bottom-details .name {
+  padding-bottom: 1rem;
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: 800;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.explore-section restaurant-item .bottom-details .desc {
+  --max-lines: 5;
+  --padding-desc: 1.5rem;
+  text-align: justify;
+  line-height: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  max-height: calc(var(--padding-desc) * var(--max-lines));
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--max-lines);
+  overflow: hidden;
+}
+@media screen and (min-width: 600px) {
+  .explore-section restaurant-item .bottom-details .name {
+    font-size: 1.7rem;
+  }
+  .explore-section restaurant-item .bottom-details .desc {
+    --max-lines: 4;
+    --padding-desc: 2rem;
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+}
+.explore-section .item-skeleton-ui {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  padding: 1.2rem;
+  border: 1px solid #272727;
+  animation: item-skeleton-ui 1s infinite linear;
+}
+.explore-section .item-skeleton-ui > * {
+  background: linear-gradient(90deg, rgb(58, 58, 58), #171717, rgb(58, 58, 58));
+  background-size: 400% 100%;
+  animation: item-gradient 1.5s infinite linear;
+}
+.explore-section .item-skeleton-ui .item-img {
+  width: 100%;
+  height: 280px;
+}
+.explore-section .item-skeleton-ui .item-title {
+  width: 70%;
+  height: 1.5rem;
+}
+.explore-section .item-skeleton-ui .item-paragraph {
+  height: 1rem;
+}
+@keyframes item-gradient {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.detail-section {
+  padding: 2rem 2.5rem;
+}
+@media screen and (min-width: 768px) {
+  .detail-section {
+    padding: 3rem 4rem;
+  }
+}
+.detail-section h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+}
+@media screen and (min-width: 520px) {
+  .detail-section h2 {
+    font-size: 3rem;
+  }
+}
+@media screen and (min-width: 520px) and (min-width: 680px) {
+  .detail-section h2 {
+    font-size: 3.5rem;
+  }
+}
+.detail-section restaurant-detail .img-container {
+  border: 5px #272727 solid;
+  width: 100%;
+  height: 150px;
+  margin: 20px 0;
+}
+.detail-section restaurant-detail .img-container picture img,
+.detail-section restaurant-detail .img-container picture source {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media screen and (min-width: 600px) {
+  .detail-section restaurant-detail .img-container {
+    height: 200px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .detail-section restaurant-detail .img-container {
+    height: 500px;
+  }
+}
+.detail-section restaurant-detail h3 {
+  text-align: left;
+  font-size: 2rem;
+}
+@media screen and (min-width: 600px) {
+  .detail-section restaurant-detail h3 {
+    font-size: 2.5rem;
+  }
+}
+@media screen and (min-width: 600px) and (min-width: 768px) {
+  .detail-section restaurant-detail h3 {
+    font-size: 3rem;
+  }
+}
+.detail-section restaurant-detail .information-container {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin: 40px 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.detail-section restaurant-detail .information-container .location,
+.detail-section restaurant-detail .information-container .rating {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 0.2rem;
+}
+.detail-section restaurant-detail .information-container .location i {
+  padding: 0 4px;
+}
+.detail-section restaurant-detail .information-container .location-details {
+  display: flex;
+  flex-flow: column nowrap;
+  padding-right: 20px;
+}
+.detail-section restaurant-detail .information-container #like,
+.detail-section restaurant-detail .information-container #unlike {
+  position: absolute;
+  right: 0rem;
+  top: -0.8rem;
+  padding: 1rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  background: #171717;
+  color: #ffffff;
+}
+@media screen and (min-width: 600px) {
+  .detail-section restaurant-detail .information-container .location,
+  .detail-section restaurant-detail .information-container .rating {
+    font-size: 1rem;
+  }
+  .detail-section restaurant-detail .information-container .location-details {
+    flex-flow: row nowrap;
+    gap: 0.5rem;
+  }
+  .detail-section restaurant-detail .information-container #like,
+  .detail-section restaurant-detail .information-container #unlike {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (min-width: 600px) and (min-width: 768px) {
+  .detail-section restaurant-detail .information-container .location,
+  .detail-section restaurant-detail .information-container .rating {
+    font-size: 1rem;
+  }
+  .detail-section restaurant-detail .information-container #like,
+  .detail-section restaurant-detail .information-container #unlike {
+    right: 0;
+    font-size: 2rem;
+  }
+}
+.detail-section restaurant-detail .description {
+  margin: 1.2rem 0;
+  text-align: justify;
+  text-indent: 3.5rem;
+  line-height: 1.6rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+@media screen and (min-width: 600px) {
+  .detail-section restaurant-detail .description {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 600px) and (min-width: 992px) {
+  .detail-section restaurant-detail .description {
+    font-size: 1.2rem;
+  }
+}
+.detail-section restaurant-detail .menu-detail {
+  margin: 1rem 0;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2rem;
+}
+.detail-section restaurant-detail .menu-detail .categories {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+.detail-section restaurant-detail .menu-detail .categories .category-list {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.4rem;
+}
+.detail-section restaurant-detail .menu-detail .categories .category-list .category-item {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.detail-section restaurant-detail .menu-detail .categories .category-list .category-item:not(:last-of-type) {
+  padding-right: 0.5rem;
+  border-right: 2px #272727 solid;
+}
+@media screen and (min-width: 768px) {
+  .detail-section restaurant-detail .menu-detail .categories .category-list .category-item {
+    font-size: 1.1rem;
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 992px) {
+  .detail-section restaurant-detail .menu-detail .categories .category-list .category-item {
+    font-size: 1.3rem;
+  }
+}
+.detail-section restaurant-detail .menu-detail .menu-list-container {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  min-height: 350px;
+}
+.detail-section restaurant-detail .menu-detail .menu-list-container .menu-btn {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+}
+.detail-section restaurant-detail .menu-detail .menu-list-container .menu-btn .foods-menu-btn,
+.detail-section restaurant-detail .menu-detail .menu-list-container .menu-btn .drinks-menu-btn {
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-bottom: #171717 3px solid;
+  background-color: transparent;
+}
+@media screen and (min-width: 768px) {
+  .detail-section restaurant-detail .menu-detail .menu-list-container .menu-btn .foods-menu-btn,
+  .detail-section restaurant-detail .menu-detail .menu-list-container .menu-btn .drinks-menu-btn {
+    font-size: 1.2rem;
+    border-bottom: #171717 5px solid;
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 992px) {
+  .detail-section restaurant-detail .menu-detail .menu-list-container .menu-btn .foods-menu-btn,
+  .detail-section restaurant-detail .menu-detail .menu-list-container .menu-btn .drinks-menu-btn {
+    font-size: 1.4rem;
+    font-weight: 800;
+  }
+}
+.detail-section restaurant-detail .menu-detail .menu-list-container .menu-list {
+  display: none;
+  flex-flow: column nowrap;
+  padding: 1rem 1.8rem;
+  height: fit-content;
+  width: fit-content;
+  font-size: 0.8rem;
+  background-color: #272727;
+  color: #ffffff;
+  list-style-type: circle;
+  line-height: 2rem;
+}
+@media screen and (min-width: 768px) {
+  .detail-section restaurant-detail .menu-detail .menu-list-container .menu-list {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 992px) {
+  .detail-section restaurant-detail .menu-detail .menu-list-container .menu-list {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}
+.detail-section restaurant-detail .review-section {
+  margin-top: 2rem;
+}
+.detail-section restaurant-detail .review-section .head-container {
+  padding: 10px 0;
+  border-bottom: 5px #272727 solid;
+  width: fit-content;
+}
+.detail-section restaurant-detail .review-section .review-list {
+  padding: 0.5rem 0;
+}
+.detail-section restaurant-detail .review-section .review-list .review-content {
+  margin: 1rem 0;
+}
+.detail-section restaurant-detail .review-section .review-list .review-content .review-top {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+.detail-section restaurant-detail .review-section .review-list .review-content .review-bottom {
+  padding: 0.5rem 0;
+  font-size: 0.7rem;
+  text-align: justify;
+}
+@media screen and (min-width: 600px) {
+  .detail-section restaurant-detail .review-section .review-list .review-content .review-top {
+    font-size: 1rem;
+  }
+  .detail-section restaurant-detail .review-section .review-list .review-content .review-bottom {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (min-width: 600px) and (min-width: 768px) {
+  .detail-section restaurant-detail .review-section .review-list .review-content .review-top {
+    font-size: 1.2rem;
+  }
+  .detail-section restaurant-detail .review-section .review-list .review-content .review-bottom {
+    font-size: 1rem;
+  }
+}
+.detail-section restaurant-detail .review-section .review-list .review-content:first-of-type .review-date {
+  color: rgb(0, 141, 0);
+}
+.detail-section restaurant-detail .review-section .review-list .review-content:not(:last-of-type) {
+  border-bottom: 2px #272727 solid;
+}
+.detail-section restaurant-detail #review-form {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+}
+.detail-section restaurant-detail #review-form input {
+  padding: 7px 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 2px solid #272727;
+}
+.detail-section restaurant-detail #review-form textarea {
+  padding: 7px 0.5rem;
+  height: 300px;
+  width: auto;
+  resize: none;
+  overflow-x: auto;
+  line-height: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 2px solid #272727;
+}
+.detail-section restaurant-detail #review-form button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 7px;
+  width: 50%;
+  align-self: flex-end;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #272727;
+  color: #ffffff;
+}
+.detail-section restaurant-detail #review-form button:hover {
+  box-shadow: 0 0 20px 2px #171717;
+  font-weight: bolder;
+}
+@media screen and (min-width: 600px) {
+  .detail-section restaurant-detail #review-form input,
+  .detail-section restaurant-detail #review-form textarea {
+    font-size: 1rem;
+  }
+  .detail-section restaurant-detail #review-form textarea {
+    height: 200px;
+  }
+}
+@media screen and (min-width: 600px) and (min-width: 768px) {
+  .detail-section restaurant-detail #review-form input,
+  .detail-section restaurant-detail #review-form textarea {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .detail-section restaurant-detail #review-form textarea {
+    height: 180px;
+  }
+  .detail-section restaurant-detail #review-form button {
+    width: 100%;
+    align-self: center;
+  }
+}
+.detail-section restaurant-detail h4 {
+  font-size: 1.4rem;
+}
+@media screen and (min-width: 600px) {
+  .detail-section restaurant-detail h4 {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (min-width: 600px) and (min-width: 768px) {
+  .detail-section restaurant-detail h4 {
+    font-size: 1.8rem;
+  }
+}
+.detail-section .detail-skeleton-ui {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  padding: 1.2rem;
+  min-height: 5rem;
+  border: 1px solid #272727;
+  animation: item-skeleton-ui 1s infinite linear;
+}
+.detail-section .detail-skeleton-ui > * {
+  background: linear-gradient(90deg, rgb(58, 58, 58), #171717, rgb(58, 58, 58));
+  background-size: 200% 100%;
+  animation: item-gradient 1.5s infinite linear;
+}
+.detail-section .detail-skeleton-ui .detail-img {
+  width: 100%;
+  height: 15rem;
+}
+.detail-section .detail-skeleton-ui .detail-title {
+  width: 40%;
+  height: 2rem;
+}
+.detail-section .detail-skeleton-ui .detail-outer-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 5rem;
+  background: none;
+}
+.detail-section .detail-skeleton-ui .detail-outer-container .detail-inner-container {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+  background: none;
+}
+.detail-section .detail-skeleton-ui .detail-outer-container .detail-inner-container > * {
+  width: 30%;
+  height: 1.5rem;
+  background: linear-gradient(90deg, rgb(58, 58, 58), #171717, rgb(58, 58, 58));
+  background-size: 200% 100%;
+  animation: item-gradient 1.5s infinite linear;
+}
+.detail-section .detail-skeleton-ui .detail-outer-container .detail-like {
+  width: 2rem;
+  height: 2rem;
+  padding: 1rem;
+  border-radius: 50%;
+  margin-left: auto;
+  background: linear-gradient(90deg, rgb(58, 58, 58), #171717, rgb(58, 58, 58));
+  background-size: 200% 100%;
+  animation: item-gradient 1.5s infinite linear;
+}
+.detail-section .detail-skeleton-ui .detail-paragraph {
+  height: 1.5rem;
+}
+@keyframes item-gradient {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+footer {
+  padding: 1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 0.5rem;
+  width: 100%;
+  background-color: #171717;
+  color: #ffffff;
+}
+@media screen and (min-width: 600px) {
+  footer {
+    padding: 1.7rem;
+  }
+}
+footer h5 {
+  font-size: 1rem;
+}
+footer p {
+  font-size: 0.7rem;
+}/*# sourceMappingURL=main.css.map */
